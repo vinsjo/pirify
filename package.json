@@ -18,6 +18,10 @@
   },
   "author": "Vincent Sjögren",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinsjo/pirify"
+  },
   "devDependencies": {
     "microbundle": "^0.14.2"
   }

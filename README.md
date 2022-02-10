@@ -2,6 +2,8 @@
 
 Spice up your life
 
+A great way to increase the size of your string variables and reduce the performance in your application at the same time!
+
 ## Installation
 
 `npm i pirify`
