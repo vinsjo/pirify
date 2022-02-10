@@ -2,7 +2,7 @@
 
 Spice up your life
 
-A great way to increase the size of your string variables and reduce the performance in your application at the same time!
+A great way to increase the size of your data and reduce the performance in your application at the same time!
 
 ## Installation
 
@@ -13,9 +13,8 @@ Example:
 ```js
 import PIRI from 'pirify';
 
-const encoded = PIRI.encode('piri');
-// => '🌶🌶🌶🍻🍻🍻🍻😂🌶🌶🍻🌶🍻🍻🌶😂🌶🌶🌶🍻🍻🌶🍻😂🌶🌶🍻🌶🍻🍻🌶'
-
+const encoded = PIRI.encode({ piri: 'spicy' });
+// => '🌶🌶🌶🌶🍻🌶🌶😂🌶🍻🍻🍻🌶🍻😂🌶🌶🌶🍻🍻🍻🍻😂🌶🌶🍻🌶🍻🍻🌶😂🌶🌶🌶🍻🍻🌶🍻😂🌶🌶🍻🌶🍻🍻🌶😂🌶🍻🍻🍻🌶🍻😂🌶🌶🌶🍻🌶🍻😂🌶🍻🍻🍻🌶🍻😂🌶🌶🌶🍻🍻🌶🌶😂🌶🌶🌶🍻🍻🍻🍻😂🌶🌶🍻🌶🍻🍻🌶😂🌶🌶🍻🍻🍻🌶🌶😂🌶🌶🌶🌶🍻🍻🌶😂🌶🍻🍻🍻🌶🍻😂🌶🌶🌶🌶🌶🍻🌶'
 const decoded = PIRI.decode(encoded);
-// => 'piri'
+// => { piri: 'spicy' }
 ```

@@ -1,10 +1,4 @@
 /**
- * @param {String} char
- */
-function charToUnicode(char) {
-	return typeof char !== 'string' ? char : char.codePointAt(0).toString(16);
-}
-/**
  * @param {String} str
  */
 function strToBin(str) {
@@ -15,7 +9,7 @@ function strToBin(str) {
 /**
  * @param {String} binString
  */
-function binToString(binString) {
+function binToStr(binString) {
 	return typeof binString !== 'string'
 		? binString
 		: binString
@@ -29,7 +23,6 @@ function binToString(binString) {
  * @param {String} emoji
  */
 function piriBinary(bin, emoji) {
-	const emojiUnicode = charToUnicode(emoji);
 	const binRegExp = new RegExp(`${bin}`, 'ig');
 	/**
 	 * @param {String} binStr
@@ -45,7 +38,7 @@ function piriBinary(bin, emoji) {
 		if (typeof str !== 'string') return str;
 		let output = '';
 		for (const char of str) {
-			output += charToUnicode(char) === emojiUnicode ? bin : char;
+			output += `${char}` === `${emoji}` ? bin : char;
 		}
 		return output;
 	}
@@ -65,31 +58,30 @@ const PIRI_BINARIES = [
 ];
 
 /**
- * @param {String} str
+ * @param {any} data
  * @returns {String}
  */
-function encode(str) {
-	if (typeof str !== 'string') {
-		throw 'PIRI.pirify function only acceps a string as parameter';
-	}
+function encode(data) {
 	return PIRI_BINARIES.reduce((acc, char) => {
 		return char.replaceBin(acc);
-	}, strToBin(str));
+	}, strToBin(typeof data === 'string' ? data : JSON.stringify(data)));
 }
 
 /**
  * @param {String} piriString
- * @returns {String}
+ * @returns {any}
  */
 function decode(piriString) {
-	if (typeof piriString !== 'string') {
-		throw 'PIRI.parse function only acceps a string as parameter';
-	}
-	return binToString(
+	const str = binToStr(
 		PIRI_BINARIES.reduce((acc, char) => {
 			return char.replaceEmoji(acc);
 		}, piriString)
 	);
+	try {
+		return JSON.parse(str);
+	} catch (e) {
+		return str;
+	}
 }
 
 const PIRI = { encode, decode };
